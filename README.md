@@ -10,6 +10,15 @@ https://anyparser.com
 pip install anyparser-langchain
 ```
 
+## Setup
+
+Before running the examples, make sure to set your Anyparser API credentials as environment variables:
+
+```bash
+export ANYPARSER_API_KEY="your-api-key"
+export ANYPARSER_API_URL="https://anyparserapi.com"
+```
+
 ## Anyparser LangChain Examples
 
 This `examples` directory contains examples demonstrating different ways to use the Anyparser LangChain integration.
@@ -23,15 +32,6 @@ python examples/05_load_folder.py
 python examples/06_ocr_markdown.py
 python examples/07_ocr_json.py
 python examples/08_crawler.py
-```
-
-## Setup
-
-Before running the examples, make sure to set your Anyparser API credentials as environment variables:
-
-```bash
-export ANYPARSER_API_KEY="your-api-key"
-export ANYPARSER_API_URL="https://anyparserapi.com"
 ```
 
 ## Examples
@@ -59,11 +59,6 @@ export ANYPARSER_API_URL="https://anyparserapi.com"
 - Multiple file handling
 - Folder processing
 - Metadata handling
-
-### OCR Capabilities
-- Language support (ISO 639-2 codes)
-- OCR presets (fast, balanced, scan)
-- Image and table extraction
 
 ### Web Crawling
 - Basic crawling with depth and scope control
