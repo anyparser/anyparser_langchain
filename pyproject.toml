@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "anyparser-langchain"
-version = "0.0.1"
+version = "0.0.2"
 description = "Anyparser LangChain Integration"
 readme = "README.md"
 requires-python = ">=3.9"

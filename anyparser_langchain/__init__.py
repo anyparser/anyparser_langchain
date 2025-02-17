@@ -2,7 +2,7 @@
 Anyparser LangChain Integration
 """
 
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 
 import asyncio
 from typing import List, Literal, Optional, Union
