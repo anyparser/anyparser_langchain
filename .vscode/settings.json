@@ -1,0 +1,41 @@
+{
+    "editor.tabSize": 4,
+    "editor.foldingStrategy": "indentation",
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.autoIndent": "none",
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "bounded",
+    "search.exclude": {
+        "**/__pycache__": true,
+        "**/.pytest_cache": true,
+        "**/.mypy_cache": true
+    },
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.pytest_cache": true,
+        "**/.mypy_cache": true
+    },
+    "files.associations": {
+        "*.toml": "ini"
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+    },
+    "isort.args": [
+        "--profile",
+        "black"
+    ],
+    "editor.padding.top": 12,
+    "terminal.integrated.scrollback": 100000,
+    "terminal.integrated.fontSize": 14,
+    "problems.defaultViewMode": "table",
+    "editor.wordWrapColumn": 150,
+    "workbench.sideBar.location": "right",
+    "editor.mouseWheelZoom": true,
+    "explorer.compactFolders": false
+}

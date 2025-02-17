@@ -1,0 +1,37 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[project]
+name = "anyparser-langchain"
+version = "0.0.1"
+description = "Anyparser LangChain Integration"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Typing :: Typed",
+]
+
+[project.urls]
+Homepage = "https://github.com/anyparser/anyparser_langchain"
+
+[tool.poetry]
+packages = [{ include = "anyparser_langchain" }]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+anyparser-core = "^1.0.1"
+langchain-core = "^0.3.34"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2"
+pytest-cov = "^2.10"
+black = "^24.2.0"
+pytest-asyncio = "^0.25.2"
+
+[tool.pytest.ini_options]
+addopts = "--cov=anyparser_langchain --cov-report=term --cov-report=html" 

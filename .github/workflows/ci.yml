@@ -1,0 +1,74 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  pipeline:
+    name: Test Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
+    steps:
+      #----------------------------------------------
+      #       check-out repo and set-up python     
+      #----------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        id: setup-python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+      
+      #----------------------------------------------
+      #  -----  install & configure poetry  -----      
+      #----------------------------------------------
+      - name: Install Poetry
+        uses: abatilo/actions-poetry@v4
+      - name: Configure Poetry virtual environments
+        run: |
+          poetry config virtualenvs.create true --local
+          poetry config virtualenvs.in-project true --local
+      
+      #----------------------------------------------
+      #       load cached venv if cache exists      
+      #----------------------------------------------
+      - name: Cache Poetry virtual environment
+        uses: actions/cache@v4
+        id: cached-poetry-dependencies
+        with:
+          path: |
+            .venv
+            ~/.cache/pypoetry
+          key: poetry-${{ runner.os }}-py${{ matrix.python-version }}-${{ hashFiles('poetry.lock', 'pyproject.toml') }}
+          restore-keys: |
+            poetry-${{ runner.os }}-py${{ matrix.python-version }}-
+      
+      #----------------------------------------------
+      #    install dependencies if cache does not exist 
+      #----------------------------------------------
+      - name: Install Poetry dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --no-root
+      
+      - name: Install project
+        run: poetry install --no-interaction
+      
+      #----------------------------------------------
+      #              run test suite   
+      #----------------------------------------------
+      - name: Run test suite with coverage
+        run: poetry run pytest tests/ -v --cov=anyparser_langchain --cov-report=term-missing --cov-fail-under=100
+      
+      #----------------------------------------------
+      #              format checking   
+      #----------------------------------------------      
+      - name: Check code formatting with Black
+        run: poetry run black ./ --check

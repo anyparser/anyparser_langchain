@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "ms-python.isort",
+        "ms-python.black-formatter",
+        "ms-vscode.cmake-tools",
+        "twxs.cmake",
+        "anysphere.pyright",
+        "ms-python.vscode-pylance",
+        "ms-python.python",
+        "ms-python.debugpy"
+    ]
+}

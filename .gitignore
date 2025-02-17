@@ -1,0 +1,8 @@
+__pycache__
+.*
+!.gitignore
+!.vscode
+!.github
+dist
+htmlcov
+!.github
